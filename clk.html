@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<script type="text/javascript">
+	setInterval(function(){
+    var date = new Date();
+    updateTime(date);
+    updateClock(date);
+},1000);
+
+
+function updateClock(date)
+{
+    var secHand = document.getElementById("sec-hand").style;
+    var minHand = document.getElementById("min-hand").style;
+    var hrHand = document.getElementById("hr-hand").style;
+
+    secHand.transform = "rotate(" + date.getSeconds() * 6 + "deg)";
+    minHand.transform = "rotate(" + date.getMinutes() * 6 + "deg)";
+    hrHand.transform = "rotate(" + (date.getHours() * 30 +date.getMinutes() * 0.5) + "deg)";
+}
+
+
+function updateTime(date) {
+	var h;
+	h = date.getHours();
+	if(h >= 12)
+    {
+        var timeDiv = document.getElementById("time");
+    	var time = "Time for Reference......"+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()+"PM";
+    	timeDiv.innerHTML = time;
+    }
+
+    else
+    {
+        var timeDiv = document.getElementById("time");
+    	var time = "Time for Reference......"+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()+"AM";
+    	timeDiv.innerHTML = time;
+    }
+
+    if(h != 12)
+    {
+        h = h % 12;
+    }
+}
+</script>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="clk.css" />
+	</head>
+	<body>
+	<div align="center" class="main">
+
+			
+
+			<div id="clock-body" align="centre">
+				<div class="num num1"><div></div></div>
+				<div class="num num2"><div></div></div>
+				<div class="num num3"><div></div></div>
+				<div class="num num4"><div></div></div>
+				<div class="num num5"><div></div></div>
+				<div class="num num6"><div></div></div>
+				<div class="num num7"><div></div></div>
+				<div class="num num8"><div></div></div>
+				<div class="num num9"><div></div></div>
+				<div class="num num10"><div></div></div>
+				<div class="num num11"><div></div></div>
+				<div class="num num12"><div></div></div>
+
+				<div id="hr-hand"></div>
+				<div id="min-hand"></div>
+				<div id="sec-hand"></div>
+
+
+			</div>
+			<div id="time"></div>
+	</div>
+	</body>
+</html>
